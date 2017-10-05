@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :require_permission, only: [:edit, :destroy]
   # GET /recipes
   # GET /recipes.json
   def index
@@ -19,12 +19,14 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1/edit
   def edit
+    
   end
 
   # POST /recipes
   # POST /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
 
     respond_to do |format|
       if @recipe.save
@@ -69,6 +71,14 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:remove_image, :image, :title, :description, ingredients_attributes:[:id, :content, :_destroy], steps_attributes:[:id, :direction, :_destroy])
+      params.require(:recipe).permit(:user_id, :remove_image, :image, :title, :description, ingredients_attributes:[:id, :content, :_destroy], steps_attributes:[:id, :direction, :_destroy])
+      
     end
+
+    def require_permission
+      if current_user != Recipe.find(params[:id]).user_id
+         redirect_to root_path
+         flash[:alert]= "You do not own this recipe"
+      end  
+    end  
 end
