@@ -23,8 +23,8 @@ gem 'railties', '~> 5.1', '>= 5.1.4'
 gem 'responders'
 gem 'warden', '~> 1.2.3'
 gem 'devise', '~> 4.2'
+gem 'fog-aws'
 
-#https://limitless-mountain-52714.herokuapp.com/
 
 group :production do 
   gem 'pg'

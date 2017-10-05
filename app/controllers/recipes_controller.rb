@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :set_recipe, only: [ :show, :edit, :update, :destroy]
   before_action :require_permission, only: [:edit, :destroy]
   # GET /recipes
   # GET /recipes.json
