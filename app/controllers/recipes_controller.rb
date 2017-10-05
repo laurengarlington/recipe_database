@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
   # POST /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user_id = current_user
+    @recipe.user_id = current_user.id
 
     respond_to do |format|
       if @recipe.save
@@ -78,7 +78,7 @@ class RecipesController < ApplicationController
     def require_permission
       if current_user != Recipe.find(params[:id]).user_id
          redirect_to root_path
-         flash[:alert]= "You do not own this recipe"
+         flash[:alert]= "What the fuck do you think you're doing"
       end  
     end  
 end
