@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, :set_recipe, only: [ :show, :edit, :update, :destroy]
-  before_action :require_permission, only: [:edit, :destroy]
+  #before_action :require_permission, only: [:edit, :destroy]
   # GET /recipes
   # GET /recipes.json
   def index
@@ -78,7 +78,7 @@ class RecipesController < ApplicationController
     def require_permission
       if current_user != Recipe.find(params[:id]).user_id
          redirect_to root_path
-         flash[:alert]= "What the fuck do you think you're doing"
+         flash[:alert]= "You do not own this recipe."
       end  
     end  
 end
