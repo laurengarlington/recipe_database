@@ -17,15 +17,14 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap-sass', :git => 'https://github.com/twbs/bootstrap-sass.git', :branch => 'next'
 gem 'nested_form_fields'
 gem 'carrierwave', '~> 1.0'
-#gem 'bcrypt', '~> 3.0'
+gem 'bcrypt', '~> 3.0'
 gem 'orm_adapter', '~> 0.1'
 gem 'railties', '~> 5.1', '>= 5.1.4'
 gem 'responders'
 gem 'warden', '~> 1.2.3'
 gem 'devise', '~> 4.2'
 gem 'fog-aws'
-#gem 'bcrypt-ruby', '3.1.5', :require => 'bcrypt'
-gem 'bcrypt', '3.1.11', platforms: [:ruby, :x64_mingw]
+
 
 group :production do 
   gem 'pg'

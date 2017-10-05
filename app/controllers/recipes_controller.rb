@@ -78,7 +78,7 @@ class RecipesController < ApplicationController
     def require_permission
       if current_user != Recipe.find(params[:id]).user_id
          redirect_to root_path
-         flash[:alert]= "You do not own this recipe."
+         flash[:alert]= "You do not own this recipe"
       end  
     end  
 end
