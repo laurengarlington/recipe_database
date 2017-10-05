@@ -24,6 +24,8 @@ gem 'responders'
 gem 'warden', '~> 1.2.3'
 gem 'devise', '~> 4.2'
 
+#https://limitless-mountain-52714.herokuapp.com/
+
 group :production do 
   gem 'pg'
   gem 'rails_12factor'
